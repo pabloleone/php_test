@@ -8,7 +8,7 @@
 			 */
 			function getList() {
 				const Http = new XMLHttpRequest();
-				const urlList = '/api/list';
+				const urlList = '/api/list.php';
 				Http.onreadystatechange = (e) => {
 					if (Http.readyState == 4 && Http.status == 200) {
 						const response = JSON.parse(Http.responseText);
@@ -33,7 +33,7 @@
 			 */
 			function getInfo(productId) {
 				const Http = new XMLHttpRequest();
-				const urlInfo = '/api/info?id='+productId;
+				const urlInfo = '/api/info.php?id='+productId;
 				Http.onreadystatechange = (e) => {
 					if (Http.readyState == 4 && Http.status == 200) {
 						// Empty the box
