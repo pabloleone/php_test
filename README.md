@@ -6,8 +6,8 @@
 ## Quick set up
 
  * Clone the project
- * Go to the root folder and execute composer install
- * Run the backend API using `php -S locahost:8001` (any port will work!)
+ * Go to the root folder and execute `composer install`
+ * Run the backend API using `php -S locahost:8001` (any port will work!) being on the `public` folder
 
 
 ## PSR
