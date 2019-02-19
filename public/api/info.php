@@ -1,42 +1,40 @@
 <?php
 
-require dirname(__DIR__).'/../vendor/autoload.php';
+include_once 'request.php';
 
-header('Content-Type: application/json');
-
-function getInfo($productId)
+class InfoController extends Request
 {
-    $baseApiUrl = 'https://www.itccompliance.co.uk/recruitment-webservice/api/';
+    public function show(string $id) : array
+    {
+        $endPoint = 'info';
 
-    $endPoint = 'info';
+        $response = false;
 
-    $client = new \GuzzleHttp\Client();
+        $data = [];
 
-    $response = false;
+        while ($response === false) {
+            try {
+                $response = $this->client->request('GET', $this->baseApiUrl.$endPoint, [
+                    'query' => ['id' => $id]
+                ]);
 
-    $data = [];
+                if ($response->getStatusCode() === 200) {
+                    $data = json_decode(strip_tags($response->getBody()), true);
 
-    while ($response === false) {
-        try {
-            $response = $client->request('GET', $baseApiUrl.$endPoint, [
-                'query' => ['id' => $productId]
-            ]);
-
-            if ($response->getStatusCode() === 200) {
-                $data = json_decode(strip_tags($response->getBody()), true);
-
-                if (isset($data['error'])) {
-                    $response = false;
-                    sleep(1);
+                    if (isset($data['error'])) {
+                        $response = false;
+                        sleep(1);
+                    }
                 }
+            } catch (Exception $e) {
+                $response = false;
+                sleep(1);
             }
-        } catch (Exception $e) {
-            $response = false;
-            sleep(1);
         }
-    }
 
-    return $data;
+        return $data;
+    }
 }
 
-echo json_encode(getInfo((string) $_GET['id']));
+$info = new InfoController();
+echo json_encode($info->show((string) $_GET['id']));

@@ -53,7 +53,7 @@
 						// Add product type
 						if (response[productId].type) {
 							var type = document.createElement("h4");
-							var typeContent = document.createTextNode(response[productId].type);
+							var typeContent = document.createTextNode('Type: '+response[productId].type);
 							type.appendChild(typeContent);
 							infoBox.appendChild(type);
 						}

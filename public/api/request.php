@@ -2,9 +2,9 @@
 
 require dirname(__DIR__).'/../vendor/autoload.php';
 
-class Request {
-
-    private $baseApiUrl = 'https://www.itccompliance.co.uk/recruitment-webservice/api/';
+class Request
+{
+    protected $baseApiUrl = 'https://www.itccompliance.co.uk/recruitment-webservice/api/';
 
     protected $client;
 
