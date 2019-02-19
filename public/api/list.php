@@ -4,6 +4,10 @@ include_once 'request.php';
 
 class ListController extends Request
 {
+    /**
+     * List all products.
+     * @return array
+     */
     public function index() : array
     {
         $endPoint = 'list';

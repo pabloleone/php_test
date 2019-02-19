@@ -14,6 +14,9 @@ class Request
         $this->client = new \GuzzleHttp\Client();
     }
 
+    /**
+     * Add request headers.
+     */
     private function addHeaders()
     {
         header('Content-Type: application/json');

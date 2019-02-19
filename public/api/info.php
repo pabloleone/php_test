@@ -4,6 +4,11 @@ include_once 'request.php';
 
 class InfoController extends Request
 {
+    /**
+     * Show product extra information.
+     * @param  string $id
+     * @return array
+     */
     public function show(string $id) : array
     {
         $endPoint = 'info';
